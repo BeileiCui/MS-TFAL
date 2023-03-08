@@ -7,7 +7,7 @@
 
 ### Requirements
 
-### Data preparation
+### Preprocessing & Data preparation
 
 Clone the repository:
 
