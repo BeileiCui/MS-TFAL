@@ -47,3 +47,4 @@ Colon_OCT.py                           ----> Dataloader for Rat Colon Dataset
 Make sure ```./dataset/Endovis2018_MSS_TFAL.py``` works before next step. 
 
 ### Traing process
+Use ```python train_MSS_TFAL.py``` to start training; parameter setting refer to ```exo.sh```
