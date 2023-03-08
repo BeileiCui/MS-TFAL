@@ -9,4 +9,10 @@
 
 ### Data preparation
 
+Clone the repository:
+
+···
+cd 
+···
+
 ### Traing process
