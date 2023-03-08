@@ -37,7 +37,7 @@ $./MSSTFAL/dataset/
 │       └── seq 4
 ```
 
-Some description of files in ```MSS-TFAL/dataset```:
+Some description of files in ```./dataset```:
 
 ```
 Endovis2018_MSS_TFAL.py                ----> Dataloader for our proposed MSS-TFAL with Endovis18 Dataset
