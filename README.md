@@ -1,4 +1,6 @@
 # Multi-Scale Supervision with Temporal Feature Affinity Learning (MSS-TFAL)
 
 ## Introduction
-Coming soon.
+This is the implementation for our MSS-TFAL.
+
+### Introduction
