@@ -55,5 +55,5 @@ Colon_OCT.py                           ----> Dataloader for Rat Colon Dataset
 train_MSS_TFAL.py                      ----> train the proposed MSS-TFAL
 train_backbone.py                      ----> train backbone model and other baselines
 test.py                                ----> test the trained model
-TFAL_test.py                           ----> Generate some samples and tests for TFAL module
+TFAL_test.py                           ----> Generate some and tests for TFAL module
 ```
