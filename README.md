@@ -48,3 +48,12 @@ Colon_OCT.py                           ----> Dataloader for Rat Colon Dataset
 
 ### Traing process
 * Use ```python train_MSS_TFAL.py``` to start training; parameter setting refer to ```exo.sh```
+
+* Some description of files in ```./dataset```:
+
+```
+train_MSS_TFAL.py                      ----> train the proposed MSS-TFAL
+train_backbone.py                      ----> train backbone model and other baselines
+test.py                                ----> test the trained model
+TFAL_test.py                           ----> Generate some samples and tests for TFAL module
+```
