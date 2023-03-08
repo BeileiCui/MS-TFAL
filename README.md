@@ -11,8 +11,8 @@
 
 Clone the repository:
 
-···
+```
 cd 
-···
+```
 
 ### Traing process
