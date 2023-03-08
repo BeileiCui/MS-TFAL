@@ -12,7 +12,7 @@
 Clone the repository:
 
 ```
-cd 
+git clone https://github.com/BeileiCui/MSS-TFAL.git
 ```
 
 ### Traing process
