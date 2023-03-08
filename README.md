@@ -9,13 +9,13 @@
 
 ### Preprocessing & Data preparation
 
-*   1. Clone the repository:
+1. Clone the repository:
 
 ```
 git clone https://github.com/BeileiCui/MSS-TFAL.git
 ```
 
-*   2. You need to download the [EndoVis18 Dataset](https://endovissub2018-roboticscenesegmentation.grand-challenge.org/Home/) and generate the dataset with synthetic noise. Make sure ```./dataset/Endovis2018_MSS_TFAL.py``` works before next step. We recommend your directory tree be like:
+2. You need to download the [EndoVis18 Dataset](https://endovissub2018-roboticscenesegmentation.grand-challenge.org/Home/) and generate the dataset with synthetic noise. Make sure ```./dataset/Endovis2018_MSS_TFAL.py``` works before next step. We recommend your directory tree be like:
 ```
 $./MSSTFAL/dataset/
 ├── endovis18
@@ -36,7 +36,8 @@ $./MSSTFAL/dataset/
 │       └── seq 4
 ```
 
-* Some description of files in ```MSS-TFAL/dataset```:
+Some description of files in ```MSS-TFAL/dataset```:
+
 ```
 Endovis2018_MSS_TFAL.py                ----> Dataloader for our proposed MSS-TFAL with Endovis18 Dataset
 Endovis2018_backbone.py                ----> Dataloader for backbone model and other baselines with Endovis18 Dataset
