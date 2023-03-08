@@ -21,16 +21,16 @@ $./MSSTFAL/dataset/
 ├── endovis18
 │   ├── train clean
 │   │   ├── seq 1
-        └── ├── labels
-            ├── left_frames
+│       └── ├── labels
+│           ├── left_frames
 │       ├── seq 2
 │           ...
 │       └── seq 16
 │
 │   └── test clean
 │       ├── seq 1
-        └── ├── labels
-            ├── left_frames
+│       └── ├── labels
+│           ├── left_frames
 │       ├── seq 2
 │           ...
 │       └── seq 4
