@@ -13,6 +13,7 @@
 
 ```
 git clone https://github.com/BeileiCui/MSS-TFAL.git
+cd MSS-TFAL
 ```
 
 2. You need to download the [EndoVis18 Dataset](https://endovissub2018-roboticscenesegmentation.grand-challenge.org/Home/) and generate the dataset with synthetic noise. Make sure ```./dataset/Endovis2018_MSS_TFAL.py``` works before next step. We recommend your directory tree be like:
