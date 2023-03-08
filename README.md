@@ -37,13 +37,13 @@ $./MSSTFAL/dataset/
 │       └── seq 4
 ```
 
-   Some description of files in ```./dataset```:
+Some description of files in ```./dataset```:
 
 ```
 Endovis2018_MSS_TFAL.py                ----> Dataloader for our proposed MSS-TFAL with Endovis18 Dataset
 Endovis2018_backbone.py                ----> Dataloader for backbone model and other baselines with Endovis18 Dataset
 Colon_OCT.py                           ----> Dataloader for Rat Colon Dataset
 ```
-   Make sure ```./dataset/Endovis2018_MSS_TFAL.py``` works before next step. 
+Make sure ```./dataset/Endovis2018_MSS_TFAL.py``` works before next step. 
 
 ### Traing process
