@@ -9,6 +9,7 @@
 
 * pytorch
 * numpy
+* opencv
 * sklearn
 * skimage
 * tqdm
