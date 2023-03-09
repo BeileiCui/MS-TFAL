@@ -23,12 +23,14 @@ git clone https://github.com/BeileiCui/MSS-TFAL.git
 cd MSS-TFAL
 ```
 
-2. Download the pretrained reset model from [resnet18](https://download.pytorch.org/models/resnet18-5c106cde.pth) and place it in ```./net/Ours/```
+2. Download the pretrained reset model from [resnet18](https://download.pytorch.org/models/resnet18-5c106cde.pth) and place it in ```net/Ours/```
 
 ### Data preparation
+* You can skip step 1-3 if you have your own dataset and dataloader.
+
 1. You need to download the [EndoVis18 Dataset](https://endovissub2018-roboticscenesegmentation.grand-challenge.org/Home/) and we recommend your directory tree be like:
 ```
-$./MSSTFAL/dataset/
+$ MSSTFAL/dataset/
 ├── endovis18
 │   ├── train_clean
 │   │   ├── seq_1
@@ -54,7 +56,6 @@ python dataset/to_class_label.py
 ```
 
 3. Generate the dataset with synthetic noise. See ```generate_noise/summary.txt``` for details.
-
 
 * Some description of files in ```./dataset```:
 
