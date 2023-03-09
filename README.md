@@ -1,7 +1,7 @@
 # Multi-Scale Temporal Feature Affinity Learning (MSTFAL)
 
 ## Introduction
-* This is the implementation for our MSS-TFAL.
+* This is the implementation for our MSTFAL.
 
 ## Usage
 
