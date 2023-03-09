@@ -7,8 +7,8 @@
 
 ### Requirements
 
-* Pytorch
-* Pytorch
+* pytorch
+* numpy
 * sklearn
 * skimage
 * tqdm
