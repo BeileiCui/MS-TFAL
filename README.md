@@ -66,8 +66,6 @@ $ MSSTFAL/dataset/
 │   ├── train_noisy_label
 │   │   ├── noisy_scene_labels_final_mask_v0
 │       │   ├── seq_1
-│           └── ├── framexxx.png
-│               ├── framexxx.png
 │           ├── seq_2
 │               ...
 │           └── seq_16
