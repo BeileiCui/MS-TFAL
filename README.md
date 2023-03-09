@@ -58,7 +58,7 @@ python dataset/to_class_label.py
 
 3. Generate the dataset with synthetic noise. See ```generate_noise/summary.txt``` for details.
 
-* Your final dataset with synthetic noise directory tree should be like:
+* Your final directory tree of dataset with synthetic noise should be like:
 
 ```
 $ MSSTFAL/dataset/
