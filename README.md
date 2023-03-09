@@ -26,7 +26,7 @@ cd MSS-TFAL
 2. Download the pretrained reset model from [resnet18](https://download.pytorch.org/models/resnet18-5c106cde.pth) and place it in ```net/Ours/```
 
 ### Data preparation
-* You can skip step 1-3 if you have your own dataset and dataloader.
+* You can skip this section if you have your own dataset and dataloader.
 
 1. You need to download the [EndoVis18 Dataset](https://endovissub2018-roboticscenesegmentation.grand-challenge.org/Home/) and we recommend your directory tree be like:
 ```
@@ -60,7 +60,8 @@ python dataset/to_class_label.py
 * Your final dataset with synthetic noise directory tree should be like:
 
 ```
-│
+$ MSSTFAL/dataset/
+├── endovis18
 │   ├── train_noisy_label
 │   │   ├── noisy_scene_labels_final_mask_v0
 │       │   ├── seq_1
