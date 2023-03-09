@@ -57,7 +57,7 @@ python dataset/to_class_label.py
 
 3. Generate the dataset with synthetic noise. See ```generate_noise/summary.txt``` for details.
 
-* Some description of files in ```./dataset```:
+* Your final dataset with synthetic noise directory tree should be like:
 
 ```
 │
@@ -71,6 +71,9 @@ python dataset/to_class_label.py
 │           └── seq_16
 │ 
 ```
+
+* Some description of files in ```./dataset```:
+
 
 ```
 Endovis2018_MSS_TFAL.py                ----> Dataloader for our proposed MSS-TFAL with Endovis18 Dataset
