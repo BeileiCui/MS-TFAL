@@ -7,6 +7,13 @@
 
 ### Requirements
 
+* Pytorch
+* Pytorch
+* sklearn
+* skimage
+* tqdm
+* tensorboardX
+* 
 ### Preprocessing & Data preparation
 
 1. Clone the repository:
