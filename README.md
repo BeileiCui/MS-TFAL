@@ -21,21 +21,30 @@ cd MSS-TFAL
 ```
 $./MSSTFAL/dataset/
 ├── endovis18
-│   ├── train clean
-│   │   ├── seq 1
+│   ├── train_clean
+│   │   ├── seq_1
 │       └── ├── labels
 │           ├── left_frames
-│       ├── seq 2
+│       ├── seq_2
 │           ...
-│       └── seq 16
+│       └── seq_16
 │
-│   └── test clean
-│       ├── seq 1
+│   ├── train_noisy_label
+│   │   ├── noisy_scene_labels_final_mask_v0
+│       │   ├── seq_1
+│           └── ├── frame000.png
+│               ├── frame001.png
+│           ├── seq_2
+│               ...
+│           └── seq_16
+│ 
+│   └── test_clean
+│       ├── seq_1
 │       └── ├── labels
 │           ├── left_frames
-│       ├── seq 2
+│       ├── seq_2
 │           ...
-│       └── seq 4
+│       └── seq_4
 ```
 
 * Some description of files in ```./dataset```:
