@@ -76,3 +76,11 @@ train_backbone.py                      ----> train backbone model and other base
 test.py                                ----> test the trained model
 TFAL_visualization.py                  ----> Generate affinity confidence and samples visualization for TFAL module
 ```
+
+### Evaluation & Visualization
+
+* Use ```python test.py``` to start evaluation; an example parameter setting is like:
+```
+python test.py --arch puredeeplab18 --log_name MSS_TFAL_noisyver_3_ver_0 --t 1 --gpu 0 --checkpoint 1 --h 256 --w 320
+```
+* More example parameter setting refer to ```exp.sh```.
