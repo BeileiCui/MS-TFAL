@@ -91,7 +91,7 @@ python train_MSS_TFAL.py --dataset endovis2018 --arch puredeeplab18 --log_name M
 
 * More example parameter setting refer to ```exp.sh```.
 
-* Some description of files in ```./```:
+* Some description of files:
 
 ```
 train_MSS_TFAL.py                      ----> train the proposed MSS-TFAL
