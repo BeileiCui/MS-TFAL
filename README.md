@@ -72,7 +72,7 @@ $ MSSTFAL/dataset/
 │ 
 ```
 
-* Some description of files in ```./dataset```:
+* Some description of files in ```dataset/```:
 
 
 ```
