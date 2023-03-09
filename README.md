@@ -24,7 +24,9 @@ $./MSSTFAL/dataset/
 │   ├── train_clean
 │   │   ├── seq_1
 │       └── ├── labels
+│           └── ├── grayframexxx.png
 │           ├── left_frames
+│           └── ├── framexxx.png
 │       ├── seq_2
 │           ...
 │       └── seq_16
@@ -32,8 +34,8 @@ $./MSSTFAL/dataset/
 │   ├── train_noisy_label
 │   │   ├── noisy_scene_labels_final_mask_v0
 │       │   ├── seq_1
-│           └── ├── frame000.png
-│               ├── frame001.png
+│           └── ├── framexxx.png
+│               ├── framexxx.png
 │           ├── seq_2
 │               ...
 │           └── seq_16
@@ -41,7 +43,9 @@ $./MSSTFAL/dataset/
 │   └── test_clean
 │       ├── seq_1
 │       └── ├── labels
+│           └── ├── framexxx.png
 │           ├── left_frames
+│           └── ├── framexxx.png
 │       ├── seq_2
 │           ...
 │       └── seq_4
