@@ -13,8 +13,8 @@ import json
 import cv2
 import os
 
-LABEL_JSON = '/mnt/data-hdd/beilei/nll_new/dataset/endovis18/train_clean/labels.json'
-DATA_ROOT = '/mnt/data-hdd/beilei/nll_new/dataset/endovis18/'
+LABEL_JSON = './MSS-TFAL/dataset/endovis18/train_clean/labels.json'
+DATA_ROOT = './MSS-TFAL/dataset/endovis18/'
 
 Procedures = {'train':[1,2,3,4,5,6,7,9,10,11,12,13,14,15,16]}
 
@@ -299,22 +299,6 @@ def resize_dataset(src, spt):
                 
                 os.makedirs(os.path.dirname(sav_pt), exist_ok=True)
                 cv2.imwrite(sav_pt, img, [cv2.IMWRITE_PNG_COMPRESSION, 0])
-
-
-
-def togray():
-    mask_path = '/mnt/data-hdd/beilei/nll_new/dataset/endovis18/test_clean/seq_1/labels/frame249.png'
-    img = cv2.imread(mask_path)
-    img2 = cv2.imread(mask_path,cv2.COLOR_BGR2GRAY)
-    mask_path2 = '/mnt/data-hdd/beilei/nll_new/dataset/endovis18/test_clean/seq_1/labels/grayframe248.png'
-    img_gray_sample = cv2.imread(mask_path2)
-    sav_pt = '/mnt/data-hdd/beilei/nll_new/dataset/endovis18/test_clean/seq_1/labels/grayframe249.png'
-    cv2.imwrite(sav_pt, img_gray_sample, [cv2.IMWRITE_PNG_COMPRESSION, 0])
-
-    with open(LABEL_JSON, 'r') as f:
-        lb_json = json.load(f)
-    json_color = [item['color'] for item in lb_json]
-
 
 
 
