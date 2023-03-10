@@ -2,7 +2,6 @@ import torch,math
 import torch.nn as nn
 import torch.nn.functional as F
 import sys,time
-sys.path.insert(0,'/raid/wjc/code/RealtimeSegmentation/')
 
 from net.utils.helpers import maybe_download
 from net.utils.layer_factory import conv1x1, conv3x3, convbnrelu, CRPBlock
@@ -71,7 +70,7 @@ class MemoryCore(nn.Module):
  
         qi = q_in.view(B, D_e, H*W) #query key:2,256,5120 # b, emb, HW
  
-        p = torch.bmm(mi, qi) # b, THW, HW: 前几帧和当前帧做点积
+        p = torch.bmm(mi, qi) # b, THW, HW: 
         p = p / math.sqrt(D_e)
         p = F.softmax(p, dim=1) # b, THW, HW
         p = self.dropout(p) #normalized weights
