@@ -20,8 +20,8 @@ def load_mask(path):
     mask = cv2.imread(str(path), 0)
     return (mask).astype(np.uint8)
 
-data_dir = '/mnt/data-hdd/beilei/nll_new/dataset/endovis18/train_clean/' # seq_1, ..., seq_16, skip seq_8
-save_dir = '/mnt/data-hdd/beilei/MSS-TFAL/dataset/endovis18/multiple_one_class_mask'
+data_dir = './MSS-TFAL/dataset/endovis18/train_clean/' # seq_1, ..., seq_16, skip seq_8
+save_dir = './MSS-TFAL/dataset/endovis18/multiple_one_class_mask'
 
 assert os.path.exists(data_dir), \
     'Source data root dir does not exist: {}.'.format(data_dir)
