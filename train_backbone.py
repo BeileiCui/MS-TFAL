@@ -347,5 +347,4 @@ def main():
 
 if __name__ == '__main__':
     with DisablePrint(local_rank=cfg.local_rank):
-        # tensorboard --logdir '/mnt/data-hdd/beilei/nll_new/results/endo18/STswin_clean_ver_0/logs'
         main()
