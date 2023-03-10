@@ -76,7 +76,7 @@ $ MS-TFAL/dataset/
 
 
 ```
-Endovis2018_MS_TFAL.py                ----> Dataloader for our proposed MSS-TFAL with Endovis18 Dataset
+Endovis2018_MS_TFAL.py                ----> Dataloader for our proposed MS-TFAL with Endovis18 Dataset
 Endovis2018_backbone.py                ----> Dataloader for backbone model and other baselines with Endovis18 Dataset
 Colon_OCT.py                           ----> Dataloader for Rat Colon Dataset
 ```
