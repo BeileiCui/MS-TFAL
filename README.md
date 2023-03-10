@@ -20,7 +20,7 @@
 1. Clone the repository:
 
 ```
-git clone https://github.com/BeileiCui/MSS-TFAL.git
+git clone xxx
 cd MSS-TFAL
 ```
 
