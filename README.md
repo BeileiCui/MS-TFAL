@@ -107,5 +107,5 @@ python test.py --arch puredeeplab18 --log_name MSS_TFAL_noisyver_3_ver_0 --t 1 -
 ```
 * More example parameter setting refer to ```exp.sh```.
 * You can also use ```python TFAL_visualization.py``` to:
-1. Compute feature based affinity confidence for each video
-2. Generate samples figures related to temporal affinity
+1. Compute feature based affinity confidence for each video.
+2. Generate samples figures related to temporal affinity.
