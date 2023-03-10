@@ -2,7 +2,6 @@ import os
 import torch
 import torch.nn as nn
 import sys,time
-sys.path.insert(0,'/mnt/data-hdd/beilei/MSS-TFAL/')
 
 from net.utils.helpers import maybe_download
 from net.utils.layer_factory import conv1x1, conv3x3, convbnrelu, CRPBlock
