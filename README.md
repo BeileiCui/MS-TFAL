@@ -21,7 +21,7 @@
 
 ```
 git clone xxx
-cd MSS-TFAL
+cd MS-TFAL
 ```
 
 2. Download the pretrained reset model from [resnet18](https://download.pytorch.org/models/resnet18-5c106cde.pth) and place it in ```net/Ours/```
