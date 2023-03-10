@@ -11,8 +11,8 @@ import argparse
 parser = argparse.ArgumentParser(description='count noisy ratio')
 parser.add_argument('--ver', type=int, default=0)
 cfg = parser.parse_args()
-noisy_final_mask_dir = '/mnt/data-hdd/beilei/MSS-TFAL/dataset/endovis18/train_noisy_label/noisy_scene_labels_final_mask_v' + str(cfg.ver)
-RGB_dir = '/mnt/data-hdd/beilei/MSS-TFAL/dataset/endovis18/train_noisy_label_Visualization/noisy_scene_labels_final_mask_v' + str(cfg.ver) + '_RGB'
+noisy_final_mask_dir = '/MSS-TFAL/dataset/endovis18/train_noisy_label/noisy_scene_labels_final_mask_v' + str(cfg.ver)
+RGB_dir = '/MSS-TFAL/dataset/endovis18/train_noisy_label_Visualization/noisy_scene_labels_final_mask_v' + str(cfg.ver) + '_RGB'
 # factor = 25
 factor = 1
 #python convert_to_RGB_mask.py --ver 2
