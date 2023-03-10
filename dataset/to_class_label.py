@@ -15,8 +15,8 @@ import os
 
 def to_class_label(mode = 'train'):
 
-    MY_DATA_ROOT = '/mnt/data-hdd/beilei/MSS-TFAL/dataset/endovis18/'
-    LABEL_JSON = '/mnt/data-hdd/beilei/MSS-TFAL/dataset/endovis18/train_clean/labels.json'
+    MY_DATA_ROOT = './MSS-TFAL/dataset/endovis18/'
+    LABEL_JSON = './MSS-TFAL/dataset/endovis18/train_clean/labels.json'
     class_num = 12
     train = [1,2,3,4,5,6,7,9,10,11,12,13,14,15,16]
     test = [1,2,3,4]
