@@ -59,8 +59,8 @@ max_rescale=cfg.max_rescale
 # ****************** Parameters of noise type ****************** # 
 
 # ****************** Generate and save noise labels ****************** # 
-src_mask_dir = '/mnt/data-hdd/beilei/MSS-TFAL/dataset/endovis18/multiple_one_class_mask'
-noisy_mask_save_dir = '/mnt/data-hdd/beilei/MSS-TFAL/dataset/endovis18/train_noisy_label/noisy_scene_labels_sep_mask_v' + str(cfg.ver)
+src_mask_dir = './MSS-TFAL/dataset/endovis18/multiple_one_class_mask'
+noisy_mask_save_dir = './MSS-TFAL/dataset/endovis18/train_noisy_label/noisy_scene_labels_sep_mask_v' + str(cfg.ver)
 if not os.path.exists(noisy_mask_save_dir):
     os.makedirs(noisy_mask_save_dir) 
 
