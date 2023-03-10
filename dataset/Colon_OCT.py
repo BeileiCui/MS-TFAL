@@ -13,7 +13,7 @@ import json
 import cv2
 import os
 
-DATA_ROOT = '/mnt/data-hdd/beilei/nll_new/dataset/Colon_OCT/'
+DATA_ROOT = './MSS-TFAL/dataset/Colon_OCT/'
 
 Procedures = {'train':['2T1','2T2','3C1','3C2','3T1','3T2','3T3','3T4','3T5','7C','8C','9C','10C','11C','12C','13C','14C','15C']
                 ,'test':['C1','C4','C5','C6','T1']}
@@ -570,20 +570,6 @@ def resize_dataset(src, spt):
 
 
 
-# def togray():
-#     mask_path = '/mnt/data-hdd/beilei/nll_new/dataset/endovis18/test_clean/seq_1/labels/frame249.png'
-#     img = cv2.imread(mask_path)
-#     img2 = cv2.imread(mask_path,cv2.COLOR_BGR2GRAY)
-#     mask_path2 = '/mnt/data-hdd/beilei/nll_new/dataset/endovis18/test_clean/seq_1/labels/grayframe248.png'
-#     img_gray_sample = cv2.imread(mask_path2)
-#     sav_pt = '/mnt/data-hdd/beilei/nll_new/dataset/endovis18/test_clean/seq_1/labels/grayframe249.png'
-#     cv2.imwrite(sav_pt, img_gray_sample, [cv2.IMWRITE_PNG_COMPRESSION, 0])
-
-#     with open(LABEL_JSON, 'r') as f:
-#         lb_json = json.load(f)
-#     json_color = [item['color'] for item in lb_json]
-
-
 
 
 if __name__ == '__main__':
@@ -623,14 +609,3 @@ if __name__ == '__main__':
     print('test label shape:\t', test[0]['label'].shape)
     print('test_part image shape:\t', test_part[0]['image'].shape)
     print('test_part label shape:\t', test_part[0]['label'].shape)
-
-#     print('train image shape:\t', train[31]['image_1'].shape)
-#     print('train label shape:\t', train[31]['label_1'].shape)
-#     print('train label shape:\t', train[31]['index'])
-#     print('train label shape:\t', len(train))
-#     print('test image shape:\t', test[1]['image'].shape)
-#     print('test label shape:\t', test[1]['label'].shape)
-#     print('test_part image shape:\t', test_part[2]['image'].shape)
-#     print('test_part label shape:\t', test_part[2]['label'].shape)
-#     print('train_clean image shape:\t', train_clean[2]['image'].shape)
-#     print('train_clean label shape:\t', train_clean[2]['label'].shape)
