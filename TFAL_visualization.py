@@ -1,6 +1,6 @@
 import os,tqdm,sys,time,argparse,tqdm
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'lib'))
-sys.path.insert(0,'/mnt/data-hdd/beilei/MSS-TFAL/')
+sys.path.insert(0,'./MSS-TFAL/')
 import numpy as np
 import torch.cuda.amp as amp
 scaler = amp.GradScaler()
