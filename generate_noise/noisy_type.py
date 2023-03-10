@@ -327,7 +327,7 @@ def add_noise_wo_polygon_batch(src_label_np, min_radius, max_radius, max_rotatio
 
 if __name__ == '__main__':
     ################ Test the polygon_label
-    mask_path = '/mnt/data-ssd/mengya/noisy_label_learning/Endovis18/train/noisy_scene_labels_sep_mask_v0/seq_7/frame065/frame065_3_no_noise.png'
+    mask_path = './MSS-TFAL/Endovis18/train/noisy_scene_labels_sep_mask_v0/seq_7/frame065/frame065_3_no_noise.png'
     src_label_np = cv2.imread(mask_path, cv2.IMREAD_GRAYSCALE)
     polygon_label = multi_object_polygon_label_generation(src_label_np)
     print('polygon_label', polygon_label.shape)
