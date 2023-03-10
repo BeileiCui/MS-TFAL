@@ -1,5 +1,3 @@
-
-
 # Here are some example training and testing script.
 
 #deeplabv3+
