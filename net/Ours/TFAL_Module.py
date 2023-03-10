@@ -2,7 +2,6 @@ import os
 import torch
 import sys
 import numpy as np
-sys.path.insert(0,'/mnt/data-hdd/beilei/MSS-TFAL/')
 
 import torch.nn.functional as F
 from torch.nn.functional import one_hot 
