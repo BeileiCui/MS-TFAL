@@ -1,13 +1,3 @@
-"""
-Purpose: count the dataset-level noise ratio
-For one image, noise ratio = 被noise污染的像素数目 / 整个图片的像素数目
-For the whole dataset, noise ratio = 图1中被noise污染的像素数目 + 图2中被noise污染的像素数目 +.. / 整个数据集的像素数目
-
-Author: Mengya Xu
-Date: 2022/12/15
-
-"""
-
 import torch
 import tqdm
 import numpy as np
@@ -22,8 +12,8 @@ parser = argparse.ArgumentParser(description='count noisy ratio')
 parser.add_argument('--ver', type=int, default=0)
 cfg = parser.parse_args()
 
-clean_label_dir = '/mnt/data-ssd/wa/MF-TAPNet/data/Endovis18/train/'
-noisy_label_dir = '/mnt/data-ssd/mengya/noisy_label_learning/Endovis18/train/noisy_scene_labels_final_mask_v' + str(cfg.ver)
+clean_label_dir = '/data/Endovis18/train/'
+noisy_label_dir = '/noisy_label_learning/Endovis18/train/noisy_scene_labels_final_mask_v' + str(cfg.ver)
 
 
 classid = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
