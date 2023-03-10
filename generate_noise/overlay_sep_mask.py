@@ -39,8 +39,8 @@ def masks_paste(masks_list):
         return mask
 
 
-noisy_mask_save_dir = '/mnt/data-hdd/beilei/MSS-TFAL/dataset/endovis18/train_noisy_label/noisy_scene_labels_sep_mask_v' + str(cfg.ver)
-noisy_final_mask_dir = '/mnt/data-hdd/beilei/MSS-TFAL/dataset/endovis18/train_noisy_label/noisy_scene_labels_final_mask_v' + str(cfg.ver)
+noisy_mask_save_dir = './MSS-TFAL/dataset/endovis18/train_noisy_label/noisy_scene_labels_sep_mask_v' + str(cfg.ver)
+noisy_final_mask_dir = './MSS-TFAL/dataset/endovis18/train_noisy_label/noisy_scene_labels_final_mask_v' + str(cfg.ver)
 
 all_frame_list = []
 for seq in tqdm.tqdm(range(1, 17)):
