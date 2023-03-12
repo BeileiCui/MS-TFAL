@@ -153,10 +153,6 @@ class Colon_OCT(Dataset):
         label = label   # c * w * h
         label_1 = label_1       # c * w * h
 
-        # label = one_hot(label.to(torch.int64), num_classes=self.class_num)
-        # label = label.permute(2,0,1) 
-        # label_1 = one_hot(label_1.to(torch.int64), num_classes=self.class_num)
-        # label_1 = label_1.permute(2,0,1) 
         return {'index':idx, 'path': [clip, frame], 'image': images, 'label': label,'image_1': images_1, 'label_1': label_1}
 
     def _load_data(self, clip, frame, t=1, global_n=0):
@@ -395,10 +391,6 @@ class Colon_OCT_MSSTFAL(Dataset):
         label = label   # c * w * h
         label_1 = label_1       # c * w * h
 
-        # label = one_hot(label.to(torch.int64), num_classes=self.class_num)
-        # label = label.permute(2,0,1) 
-        # label_1 = one_hot(label_1.to(torch.int64), num_classes=self.class_num)
-        # label_1 = label_1.permute(2,0,1) 
         return {'index':idx, 'path': [clip, frame], 'image': images, 'label': label,'image_1': images_1, 'label_1': label_1}
 
     def _load_data(self, clip, frame, t=1, global_n=0):
