@@ -44,7 +44,7 @@ if cfg.seed != 0:
  # ****************** Constant Seed ****************** # 
 
 # ****************** Parameters of noise type ****************** # 
-noisy_ratio = cfg.noisy_ratio / 100  # frame-level noise ratio: 0%， 33%， 66%， 100%
+noisy_ratio = cfg.noisy_ratio / 100  # frame-level noise ratio: 0%， 30%， 50%， 80%
 
 # dilate， erode
 radius = [cfg.radius_low, cfg.radius_up] # [a,b] increase a, increase data noise rate; increase b, increase data noise rate
