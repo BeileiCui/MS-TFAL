@@ -76,7 +76,7 @@ $ MS-TFAL/dataset/
 
 
 ```
-Endovis2018_MS_TFAL.py                ----> Dataloader for our proposed MS-TFAL with Endovis18 Dataset
+Endovis2018_MS_TFAL.py                 ----> Dataloader for our proposed MS-TFAL with Endovis18 Dataset
 Endovis2018_backbone.py                ----> Dataloader for backbone model and other baselines with Endovis18 Dataset
 Colon_OCT.py                           ----> Dataloader for Rat Colon Dataset
 ```
@@ -93,7 +93,7 @@ python train_MS_TFAL.py --dataset endovis2018 --arch puredeeplab18 --log_name MS
 * Some description of files:
 
 ```
-train_MS_TFAL.py                      ----> train the proposed MS-TFAL
+train_MS_TFAL.py                       ----> train the proposed MS-TFAL
 train_backbone.py                      ----> train backbone model and other baselines
 test.py                                ----> test the trained model
 TFAL_visualization.py                  ----> Generate affinity confidence and samples visualization for TFAL module
