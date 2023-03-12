@@ -31,7 +31,6 @@ class TimeProcesser(nn.Module):
         return x
     
 class InvertedResidualBlock(nn.Module):
-    """Inverted Residual Block from https://arxiv.org/abs/1801.04381"""
 
     def __init__(self, in_planes, out_planes, expansion_factor, stride=1):
         super(InvertedResidualBlock, self).__init__()
@@ -71,7 +70,7 @@ class MemoryCore(nn.Module):
  
         qi = q_in.view(B, D_e, H*W) #query key:2,256,5120 # b, emb, HW
  
-        p = torch.bmm(mi, qi) # b, THW, HW: 前几帧和当前帧做点积
+        p = torch.bmm(mi, qi) # b, THW, HW: 
         p = p / math.sqrt(D_e)
         p = F.softmax(p, dim=1) # b, THW, HW
         p = self.dropout(p) #normalized weights
@@ -105,12 +104,12 @@ class Memory(nn.Module):
         keys = []
         values = []
         for t in range(T):
-            k,v = self.kv(mem[:,t]) #mem里面全部帧会经过conv生成自己的key value
+            k,v = self.kv(mem[:,t]) 
             keys.append(k.unsqueeze(1))
             values.append(v.unsqueeze(1))
         MemoryKeys = torch.cat(keys, dim=1)
         MemoryValues = torch.cat(values, dim=1)
-        CurrentKey, CurrentValue = self.kv(query) #当前帧也是经过conv生成自己的key value
+        CurrentKey, CurrentValue = self.kv(query) 
         mem_out, p = self.mem_core(MemoryKeys, MemoryValues, CurrentKey, CurrentValue)
         return mem_out, p
     
