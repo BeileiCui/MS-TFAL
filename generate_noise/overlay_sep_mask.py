@@ -23,7 +23,7 @@ def mask_paste(mask1, mask2):
     if len(np.unique(mask2_np)) != 1:
         mask1_np[mask2_np!=0]=np.unique(mask2_np)[1]
 
-    # return Image.fromarray(mask1_np.astype(np.uint8)) # Image.fromarray: 是将array转换成image
+    # return Image.fromarray(mask1_np.astype(np.uint8)) # Image.fromarray: Convert array to image
     return mask1_np.astype(np.uint8)
 
     
