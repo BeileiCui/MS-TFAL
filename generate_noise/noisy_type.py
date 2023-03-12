@@ -191,7 +191,6 @@ def single_affine_noise_generation(label, max_rotation_degree=10, max_translate=
     assert len(label.shape) == 2
 
     label_tensor = torch.FloatTensor(label).unsqueeze(dim=0)
-    # https://blog.csdn.net/lichaoqi1/article/details/123889172
     label_tensor = transforms.RandomAffine(degrees=(-max_rotation_degree, max_rotation_degree),
                                            translate=(0, max_translate),
                                            scale=(1 - max_rescale, 1 + max_rescale))(label_tensor)
@@ -207,7 +206,7 @@ def add_noise(src_label_np, min_radius, max_radius, min_num_rays, max_num_rays, 
 
     random_num = random.random()
 
-    radius = random.randint(min_radius, max_radius) #############################
+    radius = random.randint(min_radius, max_radius) 
     num_rays = random.randint(min_num_rays, max_num_rays)
 
     if random_num < 0.25:
@@ -231,7 +230,7 @@ def add_noise_batch(src_label_np, min_radius, max_radius, min_num_rays, max_num_
 
     random_num = random.random()
 
-    radius = random.randint(min_radius, max_radius) #############################
+    radius = random.randint(min_radius, max_radius) 
     num_rays = random.randint(min_num_rays, max_num_rays)
 
     dst_label_np = []
@@ -269,7 +268,7 @@ def add_noise_wo_polygon(src_label_np, min_radius, max_radius, max_rotation_degr
 
     random_num = random.random()
 
-    radius = random.randint(min_radius, max_radius) #############################
+    radius = random.randint(min_radius, max_radius) 
 
     if random_num < 0.25:
         dst_label_np = dilate_mask(src_label_np, radius)
@@ -289,7 +288,7 @@ def add_noise_wo_polygon_batch(src_label_np, min_radius, max_radius, max_rotatio
 
     random_num = random.random()
 
-    radius = random.randint(min_radius, max_radius) #############################
+    radius = random.randint(min_radius, max_radius) 
     dst_label_np = []
 
     if random_num < 0.25:
