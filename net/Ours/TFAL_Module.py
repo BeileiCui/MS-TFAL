@@ -26,6 +26,7 @@ def TFAL_get_affinity(feature_1, feature_2, label_1, label_2,class_num , H = 256
     # compute the simlarities between feature feature_1 and feature_2
     feature_1 = feature_1.view(Bp, Cp, -1) #N,C,HW: 8, 304, 1280
     feature_2 = feature_2.view(Bp, Cp, -1) #N,C,HW: 8, 304, 1280
+    
     # dot product similarity
     logit1comwith2 = torch.bmm(feature_1.transpose(1, 2), feature_2) #N,HW,HW: 8, 1280, 1280
 
@@ -99,12 +100,12 @@ def TFAL_select_Mask(feature_1, feature_2, label_1, label_2,class_num ,p_thersho
     nonzeronum_p = torch.count_nonzero(masked1comwith2_dist_p,dim=2) # B,HW 8, 1280
     nonzeronum_n = torch.count_nonzero(masked1comwith2_dist_n,dim=2) # B,HW 8, 1280
     
-    dist1comwith2_p = torch.sum(masked1comwith2_dist_p,dim=2) / nonzeronum_p # B,HW 4, 1280 要找到小于p_thershold的pixels的index
+    dist1comwith2_p = torch.sum(masked1comwith2_dist_p,dim=2) / nonzeronum_p # B,HW 4, 1280 need to find index of pixels smaller than p_thershold
     dist1comwith2_p = torch.from_numpy(np.nan_to_num(dist1comwith2_p.detach().cpu().numpy())).cuda()
     nonzeronum_p_count = torch.count_nonzero(dist1comwith2_p,dim=1)
     dist1comwith2_p_average = torch.sum(dist1comwith2_p,dim=1) / nonzeronum_p_count
 
-    dist1comwith2_n = torch.sum(masked1comwith2_dist_n,dim=2) / nonzeronum_n # B,HW 4, 1280 要找到大于n_thershold的pixels的index
+    dist1comwith2_n = torch.sum(masked1comwith2_dist_n,dim=2) / nonzeronum_n # B,HW 4, 1280 need to find index of pixels larger than n_thershold
     dist1comwith2_n = torch.from_numpy(np.nan_to_num(dist1comwith2_n.detach().cpu().numpy())).cuda()
     nonzeronum_n_count = torch.count_nonzero(dist1comwith2_n,dim=1)
     dist1comwith2_n_average = torch.sum(dist1comwith2_n,dim=1) / nonzeronum_n_count
@@ -206,12 +207,12 @@ def TFAL_select_Mask_test(feature_1, feature_2, label_1, label_2,class_num ,p_th
     nonzeronum_p = torch.count_nonzero(masked1comwith2_dist_p,dim=2) # B,HW 8, 5120
     nonzeronum_n = torch.count_nonzero(masked1comwith2_dist_n,dim=2) # B,HW 8, 5120
     
-    dist1comwith2_p = torch.sum(masked1comwith2_dist_p,dim=2) / nonzeronum_p # B,HW 4, 1280 要找到小于p_thershold的pixels的index
+    dist1comwith2_p = torch.sum(masked1comwith2_dist_p,dim=2) / nonzeronum_p # B,HW 4, 1280 need to find index of pixels smaller than p_thershold
     dist1comwith2_p = torch.from_numpy(np.nan_to_num(dist1comwith2_p.detach().cpu().numpy())).cuda()
     nonzeronum_p_count = torch.count_nonzero(dist1comwith2_p,dim=1)
     dist1comwith2_p_average = torch.sum(dist1comwith2_p,dim=1) / nonzeronum_p_count
 
-    dist1comwith2_n = torch.sum(masked1comwith2_dist_n,dim=2) / nonzeronum_n # B,HW 4, 1280 要找到大于n_thershold的pixels的index
+    dist1comwith2_n = torch.sum(masked1comwith2_dist_n,dim=2) / nonzeronum_n # B,HW 4, 1280 need to find index of pixels larger than n_thershold
     dist1comwith2_n = torch.from_numpy(np.nan_to_num(dist1comwith2_n.detach().cpu().numpy())).cuda()
     nonzeronum_n_count = torch.count_nonzero(dist1comwith2_n,dim=1)
     dist1comwith2_n_average = torch.sum(dist1comwith2_n,dim=1) / nonzeronum_n_count
