@@ -87,7 +87,8 @@ for seq in tqdm.tqdm(noisy_vedio_list):
     end = 0
     frame_length_list = []
     
-    # 随机将一个视频按照随机长度的分段分为若干段，然后每段的长度储存在frame_length_list
+    # Randomly divide a video into several segments according to its random length, 
+    # and then store the length of each segment in the frame_ length_ list
     while end < len(filename_list):
         if end >=   len(filename_list) - 6:
             l = len(filename_list) - end
@@ -100,9 +101,8 @@ for seq in tqdm.tqdm(noisy_vedio_list):
     print('frame_length_list:   ',frame_length_list)
     print('fram sum:    ',sum(frame_length_list))
     end = 0
-    #对于每一个长为l的分段
+    # For each segment with length l
     for l in tqdm.tqdm(frame_length_list):
-        #得到l分段下对应的文件名和seq
         file_name = []
         seq_l = []
         for i in range(l):
@@ -114,7 +114,6 @@ for seq in tqdm.tqdm(noisy_vedio_list):
         # print(file_name)    #['grayframe000', 'grayframe001', 'grayframe002']
         # print(seq_l)    #['seq_2', 'seq_2', 'seq_2']
 
-        #得到l分段下所有的文件名，储存在class_in_l_length中
         class_in_l_length = []
         for i in file_name:
             class_id = os.listdir(os.path.join(src_mask_dir,'seq_'+str(seq), i))
@@ -124,8 +123,7 @@ for seq in tqdm.tqdm(noisy_vedio_list):
         # 'grayframe000_2.png', 'grayframe000_1.png', 'grayframe001_2.png', 'grayframe001_7.png', 'grayframe001_6.png', 
         # 'grayframe001_1.png', 'grayframe001_0.png', 'grayframe001_3.png', 'grayframe001_4.png', 'grayframe002_2.png', 
         # 'grayframe002_1.png', 'grayframe002_4.png', 'grayframe002_0.png', 'grayframe002_7.png', 'grayframe002_6.png', 'grayframe002_3.png']
-        
-        #得到l分段下包含的类，储存在class_id_total中
+
         class_id_total = []
         for class_id in class_in_l_length:
             # print('class_id', class_id)
@@ -135,7 +133,7 @@ for seq in tqdm.tqdm(noisy_vedio_list):
         class_id_total = np.unique(class_id_total)
         # print(class_id_total)   #['0' '1' '2' '3' '4' '6' '7' '9']
         
-        #对l分段下同一个类的frame进行相同的加噪
+        # Perform the same noise addition on the frame of the same class
         for i in class_id_total:
             
             temp_class = []
@@ -151,7 +149,7 @@ for seq in tqdm.tqdm(noisy_vedio_list):
                 temp_label.append(src_label_np)
             # print(temp_class,len(temp_label))   #['frame147_9.png', 'frame148_9.png'] 2
             
-            #批量处理同一个class的label，做同样的加噪
+            # Batch process the labels of the same class and do the same noise
             if i == '0':
                 noise_type = 'no_noise'
                 for j in range(len(temp_class)):
