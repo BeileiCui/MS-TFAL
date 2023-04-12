@@ -68,8 +68,7 @@ $ MS-TFAL/dataset/
 │       │   ├── seq_1
 │           ├── seq_2
 │               ...
-│           └── seq_16
-│ 
+│           └── seq_16 
 ```
 
 * Some description of files in ```dataset/```:
