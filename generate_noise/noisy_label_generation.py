@@ -14,14 +14,14 @@ from noisy_type import add_noise_batch, add_noise_wo_polygon_batch
 parser = argparse.ArgumentParser(description='Noisy data generation')
 
 parser.add_argument('--ver', type=int, default=0)
-parser.add_argument('--noisy_ratio', type=int, default=100)
-parser.add_argument('--radius_low', type=int, default=5)
-parser.add_argument('--radius_up', type=int, default=30)
-parser.add_argument('--num_rays_low', type=int, default=10)
-parser.add_argument('--num_rays_up', type=int, default=30)
+parser.add_argument('--noisy_ratio', type=int, default=50)
+parser.add_argument('--radius_low', type=int, default=40)
+parser.add_argument('--radius_up', type=int, default=50)
+parser.add_argument('--num_rays_low', type=int, default=4)
+parser.add_argument('--num_rays_up', type=int, default=8)
 parser.add_argument('--max_rotation_degree', type=int, default=30)
-parser.add_argument('--max_translate', type=float, default=0.5)
-parser.add_argument('--max_rescale', type=float, default=0.5)
+parser.add_argument('--max_translate', type=float, default=0.2)
+parser.add_argument('--max_rescale', type=float, default=0.2)
 parser.add_argument('--seed', type=int, default=314)
 
 cfg = parser.parse_args()
@@ -44,7 +44,7 @@ if cfg.seed != 0:
  # ****************** Constant Seed ****************** # 
 
 # ****************** Parameters of noise type ****************** # 
-noisy_ratio = cfg.noisy_ratio / 100  # frame-level noise ratio: 0%， 30%， 50%， 80%
+noisy_ratio = cfg.noisy_ratio / 100  # frame-level noise ratio: 30%， 50%， 80%
 
 # dilate， erode
 radius = [cfg.radius_low, cfg.radius_up] # [a,b] increase a, increase data noise rate; increase b, increase data noise rate
@@ -87,8 +87,7 @@ for seq in tqdm.tqdm(noisy_vedio_list):
     end = 0
     frame_length_list = []
     
-    # Randomly divide a video into several segments according to its random length, 
-    # and then store the length of each segment in the frame_ length_ list
+    # 随机将一个视频按照随机长度的分段分为若干段，然后每段的长度储存在frame_length_list
     while end < len(filename_list):
         if end >=   len(filename_list) - 6:
             l = len(filename_list) - end
@@ -101,8 +100,9 @@ for seq in tqdm.tqdm(noisy_vedio_list):
     print('frame_length_list:   ',frame_length_list)
     print('fram sum:    ',sum(frame_length_list))
     end = 0
-    # For each segment with length l
+    #对于每一个长为l的分段
     for l in tqdm.tqdm(frame_length_list):
+        #得到l分段下对应的文件名和seq
         file_name = []
         seq_l = []
         for i in range(l):
@@ -114,6 +114,7 @@ for seq in tqdm.tqdm(noisy_vedio_list):
         # print(file_name)    #['grayframe000', 'grayframe001', 'grayframe002']
         # print(seq_l)    #['seq_2', 'seq_2', 'seq_2']
 
+        #得到l分段下所有的文件名，储存在class_in_l_length中
         class_in_l_length = []
         for i in file_name:
             class_id = os.listdir(os.path.join(src_mask_dir,'seq_'+str(seq), i))
@@ -123,7 +124,8 @@ for seq in tqdm.tqdm(noisy_vedio_list):
         # 'grayframe000_2.png', 'grayframe000_1.png', 'grayframe001_2.png', 'grayframe001_7.png', 'grayframe001_6.png', 
         # 'grayframe001_1.png', 'grayframe001_0.png', 'grayframe001_3.png', 'grayframe001_4.png', 'grayframe002_2.png', 
         # 'grayframe002_1.png', 'grayframe002_4.png', 'grayframe002_0.png', 'grayframe002_7.png', 'grayframe002_6.png', 'grayframe002_3.png']
-
+        
+        #得到l分段下包含的类，储存在class_id_total中
         class_id_total = []
         for class_id in class_in_l_length:
             # print('class_id', class_id)
@@ -133,7 +135,7 @@ for seq in tqdm.tqdm(noisy_vedio_list):
         class_id_total = np.unique(class_id_total)
         # print(class_id_total)   #['0' '1' '2' '3' '4' '6' '7' '9']
         
-        # Perform the same noise addition on the frame of the same class
+        #对l分段下同一个类的frame进行相同的加噪
         for i in class_id_total:
             
             temp_class = []
@@ -144,41 +146,41 @@ for seq in tqdm.tqdm(noisy_vedio_list):
                     temp_class.append(j)
                     
             for k in temp_class:
-                noisy_filename_path = os.path.join(src_mask_dir,'seq_'+str(seq), k[:12],k)
+                noisy_filename_path = os.path.join(src_mask_dir,'seq_'+str(seq), k[:8],k)
                 src_label_np = cv2.imread(noisy_filename_path, cv2.IMREAD_GRAYSCALE)
                 temp_label.append(src_label_np)
             # print(temp_class,len(temp_label))   #['frame147_9.png', 'frame148_9.png'] 2
             
-            # Batch process the labels of the same class and do the same noise
+            #批量处理同一个class的label，做同样的加噪
             if i == '0':
                 noise_type = 'no_noise'
                 for j in range(len(temp_class)):
-                    nosiy_label_dir = os.path.join(noisy_mask_save_dir, 'seq_' + str(seq), temp_class[j][:12])
+                    nosiy_label_dir = os.path.join(noisy_mask_save_dir, 'seq_' + str(seq), temp_class[j][:8])
                     # print('we do not add noise to class 0')
                     # print('nosiy_label_path:    ', nosiy_label_dir)
                     if not os.path.exists(nosiy_label_dir):
                         os.makedirs(nosiy_label_dir) 
-                    cv2.imwrite(os.path.join(nosiy_label_dir, temp_class[j][:12]+'_'+i+'_'+noise_type+'.png'), temp_label[j])
+                    cv2.imwrite(os.path.join(nosiy_label_dir, temp_class[j][:8]+'_'+i+'_'+noise_type+'.png'), temp_label[j])
             
             elif i == '6': # "classid": 6 "name": "thread"
                 dst_label_np, noise_type = add_noise_wo_polygon_batch(temp_label, radius[0], radius[1], 
                                                     max_rotation_degree, max_translate, max_rescale)
                 for j in range(len(temp_class)):
-                    nosiy_label_dir = os.path.join(noisy_mask_save_dir, 'seq_' + str(seq), temp_class[j][:12])
+                    nosiy_label_dir = os.path.join(noisy_mask_save_dir, 'seq_' + str(seq), temp_class[j][:8])
                     # print('nosiy_label_path:    ', nosiy_label_dir)
                     if not os.path.exists(nosiy_label_dir):
                         os.makedirs(nosiy_label_dir) 
-                    cv2.imwrite(os.path.join(nosiy_label_dir, temp_class[j][:12]+'_'+i+'_'+noise_type+'.png'), dst_label_np[j])
+                    cv2.imwrite(os.path.join(nosiy_label_dir, temp_class[j][:8]+'_'+i+'_'+noise_type+'.png'), dst_label_np[j])
             else:
                 dst_label_np, noise_type = add_noise_batch(temp_label, radius[0], radius[1], 
                                                     num_rays[0], num_rays[1],
                                                     max_rotation_degree, max_translate, max_rescale)
                 for j in range(len(temp_class)):
-                    nosiy_label_dir = os.path.join(noisy_mask_save_dir, 'seq_' + str(seq), temp_class[j][:12])
+                    nosiy_label_dir = os.path.join(noisy_mask_save_dir, 'seq_' + str(seq), temp_class[j][:8])
                     # print('nosiy_label_path:    ', nosiy_label_dir)
                     if not os.path.exists(nosiy_label_dir):
                         os.makedirs(nosiy_label_dir) 
-                    cv2.imwrite(os.path.join(nosiy_label_dir, temp_class[j][:12]+'_'+i+'_'+noise_type+'.png'), dst_label_np[j])
+                    cv2.imwrite(os.path.join(nosiy_label_dir, temp_class[j][:8]+'_'+i+'_'+noise_type+'.png'), dst_label_np[j])
         end += l    
                         
     filename_list = []
