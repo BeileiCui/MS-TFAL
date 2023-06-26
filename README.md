@@ -9,7 +9,6 @@
 ### Requirements
 
 * pytorch
-* numpy
 * opencv
 * sklearn
 * skimage
