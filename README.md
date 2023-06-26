@@ -1,4 +1,4 @@
-# Rectifying Noisy Labels with Sequential Prior: Multi-Scale Temporal Feature Affinity Learning for Robust Video Segmentation
+# [MICCAI'2023] Rectifying Noisy Labels with Sequential Prior: Multi-Scale Temporal Feature Affinity Learning for Robust Video Segmentation
 
 ![Image](https://github.com/BeileiCui/MS-TFAL/blob/main/main_figure.jpg)
 ## Introduction
