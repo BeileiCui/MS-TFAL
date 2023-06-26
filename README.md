@@ -1,5 +1,6 @@
 # [MICCAI'2023] Multi-Scale Temporal Feature Affinity Learning for Robust Video Segmentation (MS-TFAL)
 
+![Image](https://github.com/BeileiCui/MS-TFAL/blob/main/main_figure.jpg)
 ## Introduction
 * This is the implementation for our MS-TFAL.
 
