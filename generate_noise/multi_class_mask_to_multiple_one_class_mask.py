@@ -21,7 +21,7 @@ def load_mask(path):
     mask = cv2.imread(str(path), 0)
     return (mask).astype(np.uint8)
 
-data_dir = './dataset/endovis18/train_clean/' # seq_1, ..., seq_16, skip seq_8
+data_dir = './dataset/endovis18/train/' # seq_1, ..., seq_16, skip seq_8
 save_dir = './dataset/endovis18/multiple_one_class_mask'
 
 assert os.path.exists(data_dir), \
@@ -36,7 +36,7 @@ for seq in tqdm(range(1, 17)):
         continue
 
     mask_list = []
-    mask_dir = os.path.join(data_dir, 'seq_'+str(seq), 'labels/grayframe{:03d}.png')
+    mask_dir = os.path.join(data_dir, 'seq_'+str(seq), 'class_labels/frame{:03d}.png')
 
     for i in range(149):
         frame_path = mask_dir.format(i)
