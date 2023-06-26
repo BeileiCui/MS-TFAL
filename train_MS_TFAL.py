@@ -26,19 +26,19 @@ parser.add_argument('--dist', action='store_true')
 parser.add_argument('--root_dir', type=str, default='./results/endo18')
 parser.add_argument('--dataset', type=str, choices=['endovis2018','colon_oct'],default='endovis2018')
 parser.add_argument('--data_tag', type=str, default='type')
-parser.add_argument('--log_name', type=str, default='MSS_TFAL')
+parser.add_argument('--log_name', type=str, default='MS_TFAL')
 parser.add_argument('--data_type', type=str, choices=['clean','noisy'], default='noisy')
 parser.add_argument('--data_ver', type=int, default=0)
 parser.add_argument('--arch', type=str, default='puredeeplab18')
 parser.add_argument('--pre_log_name', type=str, default=None)
 parser.add_argument('--pre_checkpoint', type=str, default=None) #!!
 
-parser.add_argument('--lr', type=float, default=3e-5)
+parser.add_argument('--lr', type=float, default=1e-4)
 parser.add_argument('--batch_size', type=int, default=4)
-parser.add_argument('--iterations', type=int, default=60000)
+parser.add_argument('--iterations', type=int, default=56000)
 parser.add_argument('--loss', type=str, default='ohem')
 
-parser.add_argument('--gpus', type=str, default='3')
+parser.add_argument('--gpus', type=str, default='0')
 parser.add_argument('--downsample', type=int, default=1)
 parser.add_argument('--h', type=int, default=256)
 parser.add_argument('--w', type=int, default=320)
@@ -52,9 +52,9 @@ parser.add_argument('--step', type=int, default=1)
 
 parser.add_argument('--ver', type=int, default=1)
 parser.add_argument('--tag', type=int, default=1)
-parser.add_argument('--T1', type=int, default=3)
+parser.add_argument('--T1', type=int, default=4)
 parser.add_argument('--T2', type=int, default=6)
-parser.add_argument('--T3', type=int, default=10)
+parser.add_argument('--T3', type=int, default=8)
 parser.add_argument('--lambda_corrected', type=float, default=0.5)
 parser.add_argument('--ratio_small_loss', type=float, default=0.4)
 parser.add_argument('--small_loss_compute_interval', type=int, default=5)
@@ -127,7 +127,7 @@ def main():
                 if batch_idx % cfg.log_interval == 0:
                     duration = time.perf_counter() - tic
                     tic = time.perf_counter()
-                    print('[%d/%d-%d/%d]' % (epoch, cfg.num_epochs, batch_idx, len(train_loader))+
+                    print('[%d/%d-%d/%d]' % (epoch_real, cfg.num_epochs * 4, batch_idx % cfg.val_interval, int(len(train_loader) / 4))+
                         'loss:{:.4f} Time:{:.4f}'.format(loss.item(),duration))
                 
                 if val_interval > 0 and (batch_idx+1) % val_interval == 0:
@@ -176,7 +176,7 @@ def main():
                 if batch_idx % cfg.log_interval == 0:
                     duration = time.perf_counter() - tic
                     tic = time.perf_counter()
-                    print('[%d/%d-%d/%d]' % (epoch, cfg.num_epochs, batch_idx, len(train_loader))+
+                    print('[%d/%d-%d/%d]' % (epoch_real, cfg.num_epochs * 4, batch_idx % cfg.val_interval, int(len(train_loader) / 4))+
                         'loss:{:.4f} Time:{:.4f}'.format(loss.item(),duration))
                 
                 if val_interval > 0 and (batch_idx+1) % val_interval == 0:
@@ -234,7 +234,7 @@ def main():
                 if batch_idx % cfg.log_interval == 0:
                     duration = time.perf_counter() - tic
                     tic = time.perf_counter()
-                    print('[%d/%d-%d/%d]' % (epoch, cfg.num_epochs, batch_idx, len(train_loader))+
+                    print('[%d/%d-%d/%d]' % (epoch_real, cfg.num_epochs * 4, batch_idx % cfg.val_interval, int(len(train_loader) / 4))+
                         'loss:{:.4f} Time:{:.4f}'.format(loss.item(),duration))
                 
                 if val_interval > 0 and (batch_idx+1) % val_interval == 0:
@@ -306,7 +306,7 @@ def main():
                 if batch_idx % cfg.log_interval == 0:
                     duration = time.perf_counter() - tic
                     tic = time.perf_counter()
-                    print('[%d/%d-%d/%d]' % (epoch, cfg.num_epochs, batch_idx, len(train_loader))+
+                    print('[%d/%d-%d/%d]' % (epoch_real, cfg.num_epochs * 4, batch_idx % cfg.val_interval, int(len(train_loader) / 4))+
                         'loss:{:.4f} Time:{:.4f}'.format(loss.item(),duration))
                 
                 if val_interval > 0 and (batch_idx+1) % val_interval == 0:
@@ -357,7 +357,7 @@ def main():
                 if batch_idx % cfg.log_interval == 0:
                     duration = time.perf_counter() - tic
                     tic = time.perf_counter()
-                    print('[%d/%d-%d/%d]' % (epoch, cfg.num_epochs, batch_idx, len(train_loader))+
+                    print('[%d/%d-%d/%d]' % (epoch_real, cfg.num_epochs * 4, batch_idx % cfg.val_interval, int(len(train_loader) / 4))+
                         'loss:{:.4f} Time:{:.4f}'.format(loss.item(),duration))
 
                 if val_interval > 0 and (batch_idx+1) % val_interval == 0:
@@ -405,7 +405,7 @@ def main():
                 if batch_idx % cfg.log_interval == 0:
                     duration = time.perf_counter() - tic
                     tic = time.perf_counter()
-                    print('[%d/%d-%d/%d]' % (epoch, cfg.num_epochs, batch_idx, len(train_loader))+
+                    print('[%d/%d-%d/%d]' % (epoch_real, cfg.num_epochs * 4, batch_idx % cfg.val_interval, int(len(train_loader) / 4))+
                         'loss:{:.4f} Time:{:.4f}'.format(loss.item(),duration))
                 
                 if val_interval > 0 and (batch_idx+1) % val_interval == 0:
@@ -464,7 +464,7 @@ def main():
                 if batch_idx % cfg.log_interval == 0:
                     duration = time.perf_counter() - tic
                     tic = time.perf_counter()
-                    print('[%d/%d-%d/%d]' % (epoch, cfg.num_epochs, batch_idx, len(train_loader))+
+                    print('[%d/%d-%d/%d]' % (epoch_real, cfg.num_epochs * 4, batch_idx % cfg.val_interval, int(len(train_loader) / 4))+
                         'loss:{:.4f} Time:{:.4f}'.format(loss.item(),duration))
                 
                 if val_interval > 0 and (batch_idx+1) % val_interval == 0:
@@ -534,7 +534,7 @@ def main():
                 if batch_idx % cfg.log_interval == 0:
                     duration = time.perf_counter() - tic
                     tic = time.perf_counter()
-                    print('[%d/%d-%d/%d]' % (epoch, cfg.num_epochs, batch_idx, len(train_loader))+
+                    print('[%d/%d-%d/%d]' % (epoch_real, cfg.num_epochs * 4, batch_idx % cfg.val_interval, int(len(train_loader) / 4))+
                         'loss:{:.4f} Time:{:.4f}'.format(loss.item(),duration))
                 
                 if val_interval > 0 and (batch_idx+1) % val_interval == 0:
@@ -825,6 +825,12 @@ def main():
             train_dataset = endovis2018('train', t=cfg.batch_size, arch='swinPlus',rate=1, global_n=cfg.global_n, data_ver=cfg.data_ver,h = h, w = w)
             train_dataset_1 = endovis2018('train', t=1, arch='swinPlus',rate=1, global_n=cfg.global_n, data_ver=cfg.data_ver,h = h, w = w)
             val_dataset = endovis2018('test_part', t=cfg.batch_size,arch='swinPlus', rate=1, global_n=cfg.global_n, data_ver=cfg.data_ver,h = h, w = w)
+            classes = train_dataset.class_num
+        elif cfg.data_type=='extra':
+            from dataset.Endovis2018_MS_TFAL import endovis2018_extra
+            train_dataset = endovis2018_extra('train', t=cfg.batch_size, arch='swinPlus',rate=1, global_n=cfg.global_n, data_ver=cfg.data_ver,h = h, w = w)
+            train_dataset_1 = endovis2018_extra('train', t=cfg.t, arch='swinPlus',rate=1, global_n=cfg.global_n, data_ver=cfg.data_ver,h = h, w = w)
+            val_dataset = endovis2018_extra('test_part', t=cfg.batch_size,arch='swinPlus', rate=1, global_n=cfg.global_n, data_ver=cfg.data_ver,h = h, w = w)
             classes = train_dataset.class_num
     elif cfg.dataset=='colon_oct':
         h,w = [cfg.h,cfg.w]
