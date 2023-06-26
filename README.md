@@ -109,4 +109,7 @@ python test.py --arch puredeeplab18 --log_name MS_TFAL_noisyver_0_ver_0 --t 1 --
 1. Compute feature based affinity confidence for each video.
 2. Generate sample figures related to temporal affinity.
 
+
+
 ## Acknowledgment
+Part codes are adopted from [STswinCL](https://github.com/YuemingJin/STswinCL)
