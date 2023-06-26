@@ -1,4 +1,4 @@
-# [MICCAI'2023]Rectifying Noisy Labels with Sequential Prior: Multi-Scale Temporal Feature Affinity Learning for Robust Video Segmentation (MS-TFAL)
+# [MICCAI'2023] Multi-Scale Temporal Feature Affinity Learning for Robust Video Segmentation (MS-TFAL)
 
 ## Introduction
 * This is the implementation for our MS-TFAL.
