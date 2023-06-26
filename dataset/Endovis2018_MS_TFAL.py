@@ -13,14 +13,14 @@ import json
 import cv2
 import os
 
-LABEL_JSON = './dataset/endovis18/train_clean/labels.json'
+LABEL_JSON = './dataset/endovis18/train/labels.json'
 DATA_ROOT = './dataset/endovis18/'
 
 Procedures = {'train':[1,2,3,4,5,6,7,9,10,11,12,13,14,15,16]}
 
 class endovis2018(Dataset):
 
-    def __init__(self, split, t=1, arch='swinPlus', rate=1, global_n=0, data_ver=0, h=512, w=640):
+    def __init__(self, split, t=1, arch='swinPlus', rate=1, global_n=0, data_ver=0, h=256, w=320):
         super(endovis2018, self).__init__()
 
         self.class_num = 12
@@ -128,20 +128,20 @@ class endovis2018(Dataset):
         return {'index':idx, 'path': [ins, frame], 'image': images, 'label': label,'image_1': images_1, 'label_1': label_1}
 
     def _load_data(self, ins, frame, t=1, global_n=0):
-        r_im = os.path.join(DATA_ROOT, 'train_clean/seq_{}/left_frames/frame{:03d}.png')
-        r_lb = os.path.join(DATA_ROOT, 'train_noisy_label/noisy_scene_labels_final_mask_v' + str(self.data_ver) +'/seq_{}/grayframe{:03d}.png') #512*640, class num
+        r_im = os.path.join(DATA_ROOT, 'train/seq_{}/left_frames/frame{:03d}.png')
+        r_lb = os.path.join(DATA_ROOT, 'train_noisy_label/noisy_scene_labels_final_mask_v' + str(self.data_ver) +'/seq_{}/frame{:03d}.png') #512*640, class num
 
         if self.train_clean:
-            r_im = os.path.join(DATA_ROOT, 'train_clean/seq_{}/left_frames/frame{:03d}.png')
-            r_lb = os.path.join(DATA_ROOT, 'train_clean/seq_{}/labels/grayframe{:03d}.png') #512*640, class num
+            r_im = os.path.join(DATA_ROOT, 'train/seq_{}/left_frames/frame{:03d}.png')
+            r_lb = os.path.join(DATA_ROOT, 'train/seq_{}/class_labels/frame{:03d}.png') #512*640, class num
             
         if self.test:
-            r_im = os.path.join(DATA_ROOT, 'test_clean/seq_{}/left_frames/frame{:03d}.png') #resized image :512*640
-            r_lb = os.path.join(DATA_ROOT, 'test_clean/seq_{}/labels/frame{:03d}.png') #ori resolution
+            r_im = os.path.join(DATA_ROOT, 'test/seq_{}/left_frames/frame{:03d}.png') #resized image :512*640
+            r_lb = os.path.join(DATA_ROOT, 'test/seq_{}/labels/frame{:03d}.png') #ori resolution
 
         if self.test_part:
-            r_im = os.path.join(DATA_ROOT, 'test_clean/seq_{}/left_frames/frame{:03d}.png') #resized image :512*640
-            r_lb = os.path.join(DATA_ROOT, 'test_clean/seq_{}/labels/frame{:03d}.png') #ori resolution
+            r_im = os.path.join(DATA_ROOT, 'test/seq_{}/left_frames/frame{:03d}.png') #resized image :512*640
+            r_lb = os.path.join(DATA_ROOT, 'test/seq_{}/labels/frame{:03d}.png') #ori resolution
 
         imgs_t = []
         imgs_t_1 = []
@@ -252,9 +252,7 @@ class endovis2018(Dataset):
         # final transform
         return imgs, imgs_t, mask, mask_1
 
-
 # ----------------------------------------------------------------------------
-
 
 def resize_dataset(src, spt):
     src = [src]
@@ -300,16 +298,16 @@ def resize_dataset(src, spt):
 
 if __name__ == '__main__':
     h,w = [256,320]
-    train = endovis2018('train',t=1,h=256, w=320)
-    test = endovis2018('test',t=1,h=256, w=320)
-    test_part = endovis2018('test_part',t=1,h=256, w=320)
-    train_clean = endovis2018('train_clean',t=1,h=256, w=320)
+    train = endovis2018('train',t=4,h=256, w=320)
+    test = endovis2018('test',t=4,h=256, w=320)
+    test_part = endovis2018('test_part',t=4,h=256, w=320)
+    train_clean = endovis2018('train_clean',t=4,h=256, w=320)
 
     print('train image shape:\t', train[0]['image'].shape)
     print('train label shape:\t', train[0]['label'].shape)
     print('train image_1 shape:\t', train[0]['image_1'].shape)
     print('train label_1 shape:\t', train[0]['label_1'].shape)
-    print('train index:\t', train[0]['index'])
+    print('train index:\t', train[0]['path'])
     print('test image shape:\t', test[0]['image'].shape)
     print('test label shape:\t', test[0]['label'].shape)
     print('test_part image shape:\t', test_part[0]['image'].shape)
