@@ -33,7 +33,7 @@ cd MS-TFAL
 ```
 $ MS-TFAL/dataset/
 ├── endovis18
-│   ├── train_clean
+│   ├── train
 │   │   ├── seq_1
 │       └── ├── labels
 │           ├── left_frames
@@ -41,7 +41,7 @@ $ MS-TFAL/dataset/
 │           ...
 │       └── seq_16
 │
-│   └── test_clean
+│   └── test
 │       ├── seq_1
 │       └── ├── labels
 │           ├── left_frames
