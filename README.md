@@ -105,4 +105,4 @@ python test.py --arch puredeeplab18 --log_name MS_TFAL_noisyver_0_ver_0 --t 1 --
 
 
 ## Acknowledgment
-Part codes are adopted from [STswinCL](https://github.com/YuemingJin/STswinCL)
+Part codes are adopted from [STswinCL](https://github.com/YuemingJin/STswinCL).
