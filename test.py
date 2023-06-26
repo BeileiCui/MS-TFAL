@@ -255,13 +255,13 @@ def main():
                 duration = time.perf_counter() - tic
 
                 # #=====visualize figure======
-                predict = output.astype(np.uint8)
-                ins = inputs['path'][0][0]
-                i = int(inputs['path'][1])
-                save_pth = cfg.vis_path.format(ins, i)
-                # print('input path:', save_pth)
-                predict = label2rgb(predict[0],color_map=color_map_oct).astype(np.uint8)
-                io.imsave(save_pth, predict)
+                # predict = output.astype(np.uint8)
+                # ins = inputs['path'][0][0]
+                # i = int(inputs['path'][1])
+                # save_pth = cfg.vis_path.format(ins, i)
+                # # print('input path:', save_pth)
+                # predict = label2rgb(predict[0],color_map=color_map_oct).astype(np.uint8)
+                # io.imsave(save_pth, predict)
 
                 dice = general_dice(inputs['label'].numpy(),
                                     output)  # dice containing each tool class
