@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser(description='count noisy ratio')
 parser.add_argument('--ver', type=int, default=0)
 cfg = parser.parse_args()
 
-clean_label_dir = './dataset/endovis18/train_clean/'
+clean_label_dir = './dataset/endovis18/train/'
 noisy_label_dir = './dataset/endovis18/train_noisy_label/noisy_scene_labels_final_mask_v' + str(cfg.ver)
 
 classid = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
@@ -37,7 +37,7 @@ for seq in tqdm.tqdm(range(1, 17)):
         continue
 
     mask_list = []
-    mask_dir = os.path.join(clean_label_dir, 'seq_'+str(seq), 'labels/grayframe{:03d}.png')
+    mask_dir = os.path.join(clean_label_dir, 'seq_'+str(seq), 'class_labels/frame{:03d}.png')
     for i in range(149):
         frame_path = mask_dir.format(i)
         mask_list.append(frame_path)
@@ -48,14 +48,14 @@ for seq in tqdm.tqdm(range(1, 17)):
     for frame in tqdm.tqdm(mask_list):
         # print('frame_id', frame_id)
         clean_frame_path = frame
-        noisy_frmae_path = os.path.join(noisy_label_dir, 'seq_'+str(seq), frame[-16:])
+        noisy_frmae_path = os.path.join(noisy_label_dir, 'seq_'+str(seq), frame[-12:])
 
         clean_np = load_mask(clean_frame_path)
         height, width  = clean_np.shape[0], clean_np.shape[1]
         noisy_np = load_mask(noisy_frmae_path)
 
         #### count the dataset level noise ratio
-        difference = np.argwhere(noisy_np != clean_np) # difference 
+        difference = np.argwhere(noisy_np != clean_np) # difference 得到的是被噪声污染的像素的坐标
         # print('difference', difference)
         num_noisy_pixel = len(difference)
         # print('num_noisy_pixel', num_noisy_pixel)
@@ -65,7 +65,18 @@ for seq in tqdm.tqdm(range(1, 17)):
         class_set = np.unique(clean_np)
         for cls in class_set:
             if cls == 0:
-                continue                         
+                continue             
+            # cls_clean = np.argwhere(clean_np == cls)
+            # cls_noisy = np.argwhere(noisy_np == cls)
+
+            # # d=[y for y in cls_clean if y in cls_noisy] # 找出既在 cls_clean 中的， 又在 cls_noisy 中的像素
+            # set1 = set(cls_clean)
+            # set2 = set(cls_noisy)
+            # unchanged_pixel = set1 & set2 # TypeError: unhashable type: 'numpy.ndarray'
+
+            # print('unchanged_pixel', unchanged_pixel)
+            # num_cls_difference = len(cls_clean)-len(unchanged_pixel)  # 这种算法应该是严格正确的，但是太耗时
+            
             num_cls_clean = len(np.argwhere(clean_np == cls))
             dic_num_clean_pixel[cls] += num_cls_clean
 
