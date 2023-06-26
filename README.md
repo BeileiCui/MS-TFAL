@@ -24,10 +24,9 @@ git clone xxx
 cd MS-TFAL
 ```
 
-2. Download the pretrained reset model from [resnet18](https://download.pytorch.org/models/resnet18-5c106cde.pth) and place it in ```net/Ours/```
+2. Download the pre-trained reset model from [resnet18](https://download.pytorch.org/models/resnet18-5c106cde.pth) and place it in ```net/Ours/```
 
-### Data preparation
-* You can skip this section if you have your own dataset and dataloader.
+### Data Preparation
 
 1. You need to download the [EndoVis18 Dataset](https://endovissub2018-roboticscenesegmentation.grand-challenge.org/Home/) and we recommend your directory tree be like:
 ```
@@ -50,15 +49,9 @@ $ MS-TFAL/dataset/
 │       └── seq_4
 ```
 
-2. Convert the RGB label to class-level label with:
+2. Generate the dataset with synthetic noise. See ```generate_noise/summary.txt``` for details.
 
-```
-python dataset/to_class_label.py
-```
-
-3. Generate the dataset with synthetic noise. See ```generate_noise/summary.txt``` for details.
-
-* Your final directory tree of dataset with synthetic noise should be like:
+* Your final directory tree of the dataset with synthetic noise should be like this:
 
 ```
 $ MS-TFAL/dataset/
@@ -81,7 +74,7 @@ Colon_OCT.py                           ----> Dataloader for Rat Colon Dataset
 ```
 * Make sure ```./dataset/Endovis2018_MS_TFAL.py``` works before next step. 
 
-### Training process
+### Training Process
 * Use ```python train_MS_TFAL.py``` to start training; an example parameter setting is like:
 ```
 python train_MS_TFAL.py --dataset endovis2018 --arch puredeeplab18 --log_name MS_TFAL_noisyver_0 --t 1 --batch_size 4 --lr 1e-4 --gpu 0,3 --ver 0 --iterations 56000 --data_type noisy --data_ver 0 --h 256 --w 320 --T1 4 --T2 6 --T3 8
