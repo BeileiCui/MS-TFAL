@@ -1,10 +1,15 @@
-# 1.To generate synthetic noise dataset, you have to first make sure you have the correct clean trainset with class-label (grayframexxx.png) like:
-$./MSSTFAL/dataset/
+## This is a summary for generating synthetic noisy labels dataset for MS-TFAL.
+
+# 1. You first need to convert the RGB label to class-level label with:
+python generate_noise/to_class_label.py
+
+# 2. Make sure you have the correct clean train set with class-label (framexxx.png) like:
+$./MS-TFAL/dataset/
 ├── endovis18
-│   ├── train_clean
+│   ├── train
 │   │   ├── seq_1
-│       └── ├── labels
-│           └── ├── grayframexxx.png
+│       └── ├── class_labels
+│           └── ├── framexxx.png
 │           ├── left_frames
 │           └── ├── framexxx.png
 │       ├── seq_2
