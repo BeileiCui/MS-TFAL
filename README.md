@@ -104,7 +104,16 @@ python test.py --arch puredeeplab18 --log_name MS_TFAL_noisyver_0_ver_0 --t 1 --
 1. Compute feature based affinity confidence for each video.
 2. Generate sample figures related to temporal affinity.
 
-
-
+## Bibtex
+If you find this work or code useful, please consider citing our paper as follows:
+```
+@article{cui2023rectifying,
+  title={Rectifying Noisy Labels with Sequential Prior: Multi-Scale Temporal Feature Affinity Learning for Robust Video Segmentation},
+  author={Cui, Beilei and Zhang, Minqing and Xu, Mengya and Wang, An and Yuan, Wu and Ren, Hongliang},
+  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
+  year={2023},
+  organization={Springer}
+}
+```
 ## Acknowledgment
 Part codes are adopted from [STswinCL](https://github.com/YuemingJin/STswinCL).
