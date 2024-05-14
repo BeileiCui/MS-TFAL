@@ -1,6 +1,6 @@
 # [MICCAI'2023] Rectifying Noisy Labels with Sequential Prior: Multi-Scale Temporal Feature Affinity Learning for Robust Video Segmentation
 
-![Image](https://github.com/BeileiCui/EndoDAC/blob/main/assets/main.jpg)
+![Image](https://github.com/BeileiCui/MS-TFAL/blob/main/main_figure.jpg)
 
 ### [__[arxiv]__](https://arxiv.org/abs/2307.05898)
 ## Introduction
